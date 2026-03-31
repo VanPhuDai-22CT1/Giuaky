@@ -1,13 +1,18 @@
 # main.py
-# Entry point for backend (Python Flask example)
-from flask import Flask
+import flask # type: ignore
 import os
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
+# Route chính /api
 @app.route('/api')
 def api_root():
     return {'message': 'API is working!'}
+
+# Route root để test nhanh
+@app.route('/')
+def home():
+    return {'message': 'Welcome to my API!'}
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 3001))
